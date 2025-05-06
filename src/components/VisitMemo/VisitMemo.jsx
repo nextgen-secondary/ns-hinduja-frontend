@@ -400,7 +400,7 @@ const VisitMemo = () => {
 
                         {/* Queue Table */}
                         {expandedDept === dept.departmentId && (
-                          <div className="border-t border-gray-200 bg-white p-4">
+                          <div className="border-t border-gray-200 bg-white">
                             {loading ? (
                               <div className="flex justify-center py-4">
                                 <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-500"></div>
