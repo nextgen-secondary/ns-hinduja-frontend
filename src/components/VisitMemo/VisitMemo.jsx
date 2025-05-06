@@ -61,6 +61,8 @@ const VisitMemo = () => {
       const response = await axios.get(`${backendUrl}/api/user/visit-memos`, {
         headers: { token }
       });
+      console.log("Active memos response", response);
+
       if (response.data.success) {
         setActiveMemos(response.data.memos);
       }
@@ -423,7 +425,7 @@ const VisitMemo = () => {
                                           <tr key={memo._id}>
                                             <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">{index + 1}</td>
                                             {/* <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">{department.tokenNumber || '-'}</td> */}
-                                            <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">{memo.patientId.patientId}</td>
+                                            <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">{memo.patientId}</td>
                                             <td className="px-4 py-2 whitespace-nowrap text-sm">
                                               {getStatusBadge(department.status || 'waiting')}
                                             </td>
@@ -438,7 +440,7 @@ const VisitMemo = () => {
                               </div>
                             ) : (
                               <div className="text-center py-4 text-gray-500">No queue data available</div>
-                            )}
+                            )}                    
                           </div>
                         )}
                       </div>
