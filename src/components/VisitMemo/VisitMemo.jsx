@@ -29,6 +29,7 @@ const VisitMemo = () => {
   const [showCreateForm, setShowCreateForm] = useState(false);
 
   console.log("Active memoe log: ", activeMemos);
+  console.log("Context User Data: ", userData);
   console.log("Queue data log: ", queueData);
 
   useEffect(() => {
@@ -475,12 +476,21 @@ const VisitMemo = () => {
                                   <tbody className="bg-white divide-y divide-gray-200">
                                     {queueData && queueData.queue ? (
                                       queueData.queue.map((patient) => (
-                                        <tr key={patient.tokenNumber}>
+                                        <tr 
+                                          key={patient.tokenNumber}
+                                          className={`${
+                                            patient.patientId === userData.patientId
+                                              ? 'bg-blue-50 border-l-4 border-blue-500' 
+                                              : ''
+                                          }`}
+                                        >
                                           <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">
                                             {patient.position}
                                           </td>
                                           <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-900">
-                                            {patient.patientId}
+                                            {patient.patientId === userData.patientId 
+                                              ? 'You'
+                                              : patient.patientId}
                                           </td>
                                           <td className="px-4 py-2 whitespace-nowrap text-sm">
                                             {getStatusBadge(patient.status)}
